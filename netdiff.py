@@ -8,11 +8,15 @@ if len(argv) != 3:
     exit()
 
 net = IPSet()
-incfile = open(argv[1])
-for line in incfile:
-    net = net | IPSet([line])
-exfile = open(argv[2])
-for line in exfile:
-    net.remove(line)
+
+with open(argv[1], 'r') as incfile:
+    for line in incfile:
+        net = net | IPSet([line])
+
+with open(argv[2], 'r') as exfile:
+    for line in exfile:
+        net.remove(line)
+
 for cidr in net.iter_cidrs():
     print(cidr)
+
