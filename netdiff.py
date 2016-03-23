@@ -4,7 +4,7 @@ from sys import argv
 from netaddr import IPSet
 
 if len(argv) != 3:
-    print('Usage: netdiff.py3 include.txt exclude.txt')
+    print('Usage: {0} include.txt exclude.txt'.format(argv[0]))
     exit()
 
 net = IPSet()
